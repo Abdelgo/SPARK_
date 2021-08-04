@@ -1,12 +1,12 @@
-Spark installation:
+# Spark installation on MAC OS:
 open a shell on mac :
-> javac - version (to chek if 1.8)
-> wget http:thelinkoftheapachespark
-> tar xvf 'thefiledownloaded'
-> cd into the file 
-> ./sbin/start-all.sh (will start an instance of spark)
-> ./bin/park-shell (run the spark shell)
-check the spark UI port
+> javac - version (to chek if 1.8)  
+> wget http:thelinkoftheapachespark  
+> tar xvf 'thefiledownloaded'  
+> cd into the file   
+> ./sbin/start-all.sh (will start an instance of spark)  
+> ./bin/park-shell (run the spark shell)  
+check the spark UI port  
 
 inside the bin folder > ls
 beeline			load-spark-env.sh	spark-class		spark-sql		sparkR
