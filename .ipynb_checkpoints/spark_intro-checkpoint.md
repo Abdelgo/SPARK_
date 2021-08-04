@@ -59,7 +59,7 @@ Tuning serialization
 the Java type is convenient but it could slow and bloated if it's done naively  
 <img src="/photos/2.png">
 by defult spark serialize its objects using Java's ObjectOutputStream framework, it's felxible but often slow  
-> another option is Kryo serialization, it serializes objects faster, more compact than java serialization (up to 10 times)
+> another option is Kryo serialization, it serializes objects faster, more compact than java serialization (up to 10 times)  
 <img src="/photos/3.png">
 
 ## 3. Memory Tunning
@@ -69,7 +69,7 @@ Three considerations to take care of:
 > overhead of garbage collection
 Java objects
 - fast to access
-- but Consume more space
+- but Consume more space  
 <img src="/photos/4.png">
 <img src="/photos/5.png">
 <img src="/photos/6.png">
@@ -81,8 +81,9 @@ how to set driver memory, executor memory, master and worker daemon memory
 
 those options can be then checked on web UI and see the beahvior for an eventual fine tunning  
 
-## 4. garbage collection tunning
-before starting tunning garbage collection you start by collecting some statistics, this will determine how much garbage collections occurs and for how long
+## 5. garbage collection tunning
+before starting tunning garbage collection you start by collecting some statistics, this will determine how much garbage collections occurs and for how long  
+
 <img src="/photos/7.png">
 <img src="/photos/8.png">
 
@@ -103,22 +104,24 @@ to set the parallelism value:
 
 
 ## 4. Broadcast functionality
-broadcast functioanlity is used to reduce the size of your tasks in your spark cluster
+broadcast functionality is used to reduce the size of your tasks in your spark cluster
 code example:  
 to reduce the size of serialized task
 ```python
 from pyspark.sql.functions import broadcast
-speciestable = broadcast(spark.createDataFrame([("setosa",1),("versicolor",2),("virginica",3)],schema=schema))```
+speciestable = broadcast(spark.createDataFrame([("setosa",1),("versicolor",2),("virginica",3)],schema=schema))```  
+
 
 ## 5. Explain query execution
 
 this is a feature that exists since spark 2.x  
 if you are dealing with slow running query especiially joins, you can run the following code example :  
+
 ```python
 irisjoin = iris.join(speciestable,on='species')
 irisjoin.explain()
-irisjoin.explain(extended=True)
-```
+irisjoin.explain(extended=True)```
+
 ## 6. Compression
 ```python
 dataframe.write.option("compression","snappy").parquet("filename-target") # snappy or gzip
