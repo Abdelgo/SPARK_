@@ -109,7 +109,8 @@ code example:
 to reduce the size of serialized task
 ```python
 from pyspark.sql.functions import broadcast
-speciestable = broadcast(spark.createDataFrame([("setosa",1),("versicolor",2),("virginica",3)],schema=schema))```  
+speciestable = broadcast(spark.createDataFrame([("setosa",1),("versicolor",2),("virginica",3)],schema=schema))
+```  
 
 
 ## 5. Explain query execution
@@ -120,7 +121,8 @@ if you are dealing with slow running query especiially joins, you can run the fo
 ```python
 irisjoin = iris.join(speciestable,on='species')
 irisjoin.explain()
-irisjoin.explain(extended=True)```
+irisjoin.explain(extended=True)
+```
 
 ## 6. Compression
 ```python
